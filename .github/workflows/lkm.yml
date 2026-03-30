@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Environment Initialization
         run: |
-          sudo dnf install gcc clang lld repo bc flex openssl-devel openssl-devel-engine wget tar zstd bsdtar file rsync zip bison -y
+          sudo dnf install gcc clang lld repo bc flex openssl-devel openssl-devel-engine wget tar zstd bsdtar file rsync zip bison cmp which -y
       - name: Clone Kernel
         run: |
           git clone --depth=1 https://github.com/cyberknight777/dragonheart_kernel_motorola_cancunf.git kernel
