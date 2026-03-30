@@ -24,7 +24,7 @@ jobs:
           ./ast-grep -U -p '$$$ check_exports($$$) {$$$}' -r '' scripts/mod/modpost.c
           ./ast-grep -U -p 'check_exports($$$);' -r '' scripts/mod/modpost.c
           sed -i '/config KSU/,/help/{s/default y/default m/}' drivers/kernelsu/Kconfig
-          bash kramel.sh --obj=security/ --obj=drivers/kernelsu/kernelsu.ko
+          KCFLAGS="-I$(pwd)/drivers/kernelsu/include" bash kramel.sh --obj=security/ --obj=drivers/kernelsu/kernelsu.ko
           ./clang/bin/llvm-objcopy --strip-debug out/drivers/kernelsu/kernelsu.ko ./kernelsu.ko
           rm -rf KernelSU/ drivers/kernelsu
           git restore drivers/ scripts/
