@@ -133,7 +133,7 @@ jobs:
           ./ast-grep -U -p '$$$ check_exports($$$) {$$$}' -r '' scripts/mod/modpost.c
           ./ast-grep -U -p 'check_exports($$$);' -r '' scripts/mod/modpost.c
           sed -i '/config KSU/,/help/{s/default y/default m/}' drivers/kernelsu/Kconfig
-          bash kramel.sh --obj=security/ --obj=drivers/kernelsu/kernelsu.ko
+          bash kramel.sh --obj=security/ --extmod=drivers/kernelsu
           ./clang/bin/llvm-objcopy --strip-debug out/drivers/kernelsu/kernelsu.ko ./kernelsu.ko
           rm -rf KernelSU/ drivers/kernelsu
           git restore drivers/ scripts/
@@ -145,7 +145,7 @@ jobs:
           ./ast-grep -U -p '$$$ check_exports($$$) {$$$}' -r '' scripts/mod/modpost.c
           ./ast-grep -U -p 'check_exports($$$);' -r '' scripts/mod/modpost.c
           sed -i '/config KSU/,/help/{s/default y/default m/}' drivers/kernelsu/Kconfig
-          bash kramel.sh --obj=security/ --obj=drivers/kernelsu/kernelsu.ko
+          bash kramel.sh --obj=security/ --extmod=drivers/kernelsu
           ./clang/bin/llvm-objcopy --strip-debug out2/drivers/kernelsu/kernelsu.ko ./kernelsu_next.ko
           echo "DATE=$(date -u '+%Y%m%d%I%M')" >> $GITHUB_ENV
           echo "DATE=$DATE"
